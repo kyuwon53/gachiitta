@@ -1,10 +1,13 @@
 package com.gachi.itta.domain.room;
 
+import com.gachi.itta.domain.user.Attend;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 방 모델
@@ -42,6 +45,11 @@ public class Room extends BaseTimeEntity {
      * 참가자 수 (제한사항)
      */
     private int participantsCount;
+    /**
+     * 참여 목록
+     */
+    @OneToMany(mappedBy = "room")
+    private List<Attend> attends = new ArrayList<>();
 
     @Builder
     public Room(Long id, String name, String description, RoomType type, String owner, int participantsCount) {
