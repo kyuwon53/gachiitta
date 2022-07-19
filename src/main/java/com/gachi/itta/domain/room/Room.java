@@ -1,5 +1,6 @@
 package com.gachi.itta.domain.room;
 
+import com.gachi.itta.domain.BaseTimeEntity;
 import com.gachi.itta.domain.user.Attend;
 import lombok.Builder;
 import lombok.Getter;

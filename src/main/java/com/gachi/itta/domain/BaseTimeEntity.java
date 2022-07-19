@@ -1,4 +1,4 @@
-package com.gachi.itta.domain.room;
+package com.gachi.itta.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
