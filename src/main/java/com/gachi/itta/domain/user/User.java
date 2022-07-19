@@ -38,6 +38,14 @@ public class User extends BaseTimeEntity {
      */
     @Column
     private String picture;
+
+    /**
+     * 회원 역할
+     * GUEST, USER
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
     /**
      * 사용자 방 참여 목록
      */
@@ -45,16 +53,38 @@ public class User extends BaseTimeEntity {
     private List<Attend> attends = new ArrayList<>();
 
     /**
-     * 사용자 생성
-     *
-     * @param name    회원 이름
-     * @param email   회원 이메일
-     * @param picture 회원 프로필 사진
+     * 사용자 객체를 생성합니다.
+     * @param name
+     * @param email
+     * @param picture
+     * @param role
      */
     @Builder
-    public User(String name, String email, String picture) {
+    public User(String name, String email, String picture, Role role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
+        this.role = role;
+    }
+
+    /**
+     * 사용자 권한 key값을 반환합니다.
+     * @return
+     */
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
+
+    /**
+     * 사용자 정보를 업데이트합니다.
+     *
+     * @param name
+     * @param picture
+     * @return
+     */
+    public User update(String name, String picture) {
+        this.name = name;
+        this.picture = picture;
+        return this;
     }
 }
