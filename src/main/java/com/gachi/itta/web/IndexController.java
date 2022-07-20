@@ -1,5 +1,6 @@
 package com.gachi.itta.web;
 
+import com.gachi.itta.config.auth.LoginUser;
 import com.gachi.itta.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,7 @@ public class IndexController {
      * @return
      */
     @GetMapping("/")
-    public String index(Model model) {
-
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    public String index(Model model, @LoginUser SessionUser user) {
 
         if (user != null) {
             model.addAttribute("loginUserName", user.getName());
