@@ -11,6 +11,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  profiles:
+    include: oauth
+  session:
+    store-type: jdbc
+    jdbc:
+      timeout: 1800
+      initialize-schema: always
+      table-name: SPRING_SESSION
 logging:
   level:
     org.hibernate.SQL: debug
